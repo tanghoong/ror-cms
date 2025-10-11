@@ -1,55 +1,70 @@
 # ror-cms
+Ruby on Rails CMS - A basic CRUD Content Management System
 
-Ruby on Rails CMS
+## Description
+This is a basic Ruby on Rails CMS (Content Management System) built to demonstrate CRUD operations. It allows you to create, read, update, and delete articles.
 
-## Setup
+## Features
+- Create new articles with title, content, author, and publish status
+- View all articles in a list
+- View individual article details
+- Edit existing articles
+- Delete articles
+- RESTful API with JSON responses
 
-This Rails application uses Slim templating and Tailwind CSS.
+## Prerequisites
+- Ruby 3.2.3 or higher
+- Rails 8.0.3 or higher
+- SQLite3
 
-### Initial Setup
+## Setup Instructions
 
-1. Install dependencies:
-   ```bash
-   bundle install
-   ```
-
-2. Setup Tailwind CSS (first-time setup; already applied in repo):
-   ```bash
-   bin/rails tailwindcss:install
-   ```
-
-3. Start the development server:
-   ```bash
-   rails s
-   ```
-
-### Development with Tailwind
-
-To run the app with automatic Tailwind rebuilding on changes:
-
+1. Clone the repository:
 ```bash
-bin/dev
+git clone https://github.com/tanghoong/ror-cms.git
+cd ror-cms
 ```
 
-This starts both the Rails server and the Tailwind CSS watcher.
-
-### Verifying Tailwind
-
-To verify Tailwind is working, add a sample class to any view:
-
-```html
-<div class="p-6 text-xl text-blue-600">Hello Tailwind!</div>
-```
-
-The styles should be applied when you view the page.
-
-### Generator Configuration
-
-This app is configured to use Slim templates by default for any new scaffolds or views:
-
+2. Install dependencies:
 ```bash
-rails g scaffold Post title:string
+bundle install
 ```
 
-This will generate Slim templates instead of ERB.
+3. Set up the database:
+```bash
+bin/rails db:create
+bin/rails db:migrate
+bin/rails db:seed
+```
+
+4. Start the Rails server:
+```bash
+bin/rails server
+```
+
+5. Visit http://localhost:3000 in your browser
+
+## Usage
+
+### Managing Articles
+- **View all articles**: Navigate to the home page (/)
+- **Create new article**: Click "New article" button
+- **View article**: Click "Show this article" on any article
+- **Edit article**: Click "Edit this article" on the article show page
+- **Delete article**: Click "Destroy this article" on the article show page
+
+### API Endpoints
+- `GET /articles.json` - List all articles
+- `GET /articles/:id.json` - Show specific article
+- `POST /articles.json` - Create new article
+- `PATCH/PUT /articles/:id.json` - Update article
+- `DELETE /articles/:id.json` - Delete article
+
+## Running Tests
+```bash
+bin/rails test
+```
+
+## License
+This project is licensed under the MIT License - see the LICENSE file for details.
 

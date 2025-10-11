@@ -7,3 +7,28 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+
+# Create sample articles for the CMS
+Article.create([
+  {
+    title: "Welcome to our CMS",
+    content: "This is a basic Ruby on Rails CMS built with scaffolding. You can create, read, update, and delete articles.",
+    author: "Admin",
+    published: true
+  },
+  {
+    title: "Getting Started with Rails",
+    content: "Ruby on Rails is a server-side web application framework written in Ruby. It follows the Model-View-Controller (MVC) pattern.",
+    author: "John Doe",
+    published: true
+  },
+  {
+    title: "Draft Article",
+    content: "This is a draft article that hasn't been published yet.",
+    author: "Jane Smith",
+    published: false
+  }
+])
+
+puts "Created #{Article.count} articles"
+
