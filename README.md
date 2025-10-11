@@ -1,24 +1,55 @@
-# README
+# ror-cms
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Ruby on Rails CMS
 
-Things you may want to cover:
+## Setup
 
-* Ruby version
+This Rails application uses Slim templating and Tailwind CSS.
 
-* System dependencies
+### Initial Setup
 
-* Configuration
+1. Install dependencies:
+   ```bash
+   bundle install
+   ```
 
-* Database creation
+2. Setup Tailwind CSS (first-time setup; already applied in repo):
+   ```bash
+   bin/rails tailwindcss:install
+   ```
 
-* Database initialization
+3. Start the development server:
+   ```bash
+   rails s
+   ```
 
-* How to run the test suite
+### Development with Tailwind
 
-* Services (job queues, cache servers, search engines, etc.)
+To run the app with automatic Tailwind rebuilding on changes:
 
-* Deployment instructions
+```bash
+bin/dev
+```
 
-* ...
+This starts both the Rails server and the Tailwind CSS watcher.
+
+### Verifying Tailwind
+
+To verify Tailwind is working, add a sample class to any view:
+
+```html
+<div class="p-6 text-xl text-blue-600">Hello Tailwind!</div>
+```
+
+The styles should be applied when you view the page.
+
+### Generator Configuration
+
+This app is configured to use Slim templates by default for any new scaffolds or views:
+
+```bash
+rails g scaffold Post title:string
+```
+
+This will generate Slim templates instead of ERB.
+
