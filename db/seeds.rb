@@ -31,4 +31,3 @@ Article.create([
 ])
 
 puts "Created #{Article.count} articles"
-
