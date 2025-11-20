@@ -14,7 +14,7 @@ This is a basic Ruby on Rails CMS (Content Management System) built to demonstra
 
 ## Prerequisites
 - Ruby 3.2.3 or higher
-- Rails 8.0.3 or higher
+- Rails 8.1.1 or higher
 - SQLite3
 
 ## Setup Instructions
