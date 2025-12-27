@@ -4,6 +4,22 @@ class ArticlesController < ApplicationController
   # GET /articles or /articles.json
   def index
     @articles = Article.recent
+
+    # Apply search filter
+    if params[:search].present?
+      @articles = @articles.where("title LIKE ? OR content LIKE ? OR author LIKE ?",
+                                   "%#{params[:search]}%", "%#{params[:search]}%", "%#{params[:search]}%")
+    end
+
+    # Apply status filter
+    if params[:status].present?
+      case params[:status]
+      when "published"
+        @articles = @articles.published
+      when "draft"
+        @articles = @articles.unpublished
+      end
+    end
   end
 
   # GET /articles/1 or /articles/1.json
