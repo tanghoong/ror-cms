@@ -1,13 +1,13 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  title: MyString
-  content: MyText
-  author: MyString
-  published: false
+  title: First Article Title
+  content: This is the content for the first article with enough text to pass validation.
+  author: John Doe
+  published: true
 
 two:
-  title: MyString
-  content: MyText
-  author: MyString
+  title: Second Article Title
+  content: This is the content for the second article with enough text to pass validation.
+  author: Jane Smith
   published: false

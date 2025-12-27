@@ -22,6 +22,33 @@
   </head>
 
   <body>
-    <%= yield %>
+    <header class="header">
+      <div class="container">
+        <h1 class="logo"><%= link_to "RoR CMS", root_path %></h1>
+        <nav class="nav">
+          <%= link_to "Articles", articles_path, class: "nav-link" %>
+          <%= link_to "New Article", new_article_path, class: "nav-link btn-primary" %>
+        </nav>
+      </div>
+    </header>
+    
+    <main class="main">
+      <div class="container">
+        <% if notice %>
+          <div class="alert alert-success"><%= notice %></div>
+        <% end %>
+        <% if alert %>
+          <div class="alert alert-danger"><%= alert %></div>
+        <% end %>
+        
+        <%= yield %>
+      </div>
+    </main>
+    
+    <footer class="footer">
+      <div class="container">
+        <p>&copy; 2025 RoR CMS - A Ruby on Rails Content Management System</p>
+      </div>
+    </footer>
   </body>
 </html>
