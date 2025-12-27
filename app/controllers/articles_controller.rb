@@ -7,7 +7,7 @@ class ArticlesController < ApplicationController
 
     # Apply search filter
     if params[:search].present?
-      search_term = "%#{params[:search]}%"
+      search_term = "%#{ActiveRecord::Base.sanitize_sql_like(params[:search])}%"
       @articles = @articles.where(
         "title LIKE ? OR content LIKE ? OR author LIKE ?",
         search_term, search_term, search_term

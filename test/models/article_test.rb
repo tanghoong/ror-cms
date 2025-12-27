@@ -11,6 +11,11 @@ class ArticleTest < ActiveSupport::TestCase
     assert_not article.save, "Saved the article with a title shorter than 3 characters"
   end
 
+  test "should not save article with long title" do
+    article = Article.new(title: "A" * 201, content: "Some content here", author: "Test Author")
+    assert_not article.save, "Saved the article with a title longer than 200 characters"
+  end
+
   test "should not save article without content" do
     article = Article.new(title: "Test Title", author: "Test Author")
     assert_not article.save, "Saved the article without content"
@@ -24,6 +29,11 @@ class ArticleTest < ActiveSupport::TestCase
   test "should not save article without author" do
     article = Article.new(title: "Test Title", content: "Some content here")
     assert_not article.save, "Saved the article without an author"
+  end
+
+  test "should not save article with long author name" do
+    article = Article.new(title: "Test Title", content: "Some content here", author: "A" * 101)
+    assert_not article.save, "Saved the article with an author name longer than 100 characters"
   end
 
   test "should save valid article" do
