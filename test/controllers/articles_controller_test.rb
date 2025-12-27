@@ -45,4 +45,35 @@ class ArticlesControllerTest < ActionDispatch::IntegrationTest
 
     assert_redirected_to articles_url
   end
+
+  test "should filter articles by search term" do
+    get articles_url, params: { search: "First" }
+    assert_response :success
+    assert_select ".article-card", minimum: 1
+  end
+
+  test "should filter articles by published status" do
+    get articles_url, params: { status: "published" }
+    assert_response :success
+  end
+
+  test "should filter articles by draft status" do
+    get articles_url, params: { status: "draft" }
+    assert_response :success
+  end
+
+  test "should combine search and status filter" do
+    get articles_url, params: { search: "Article", status: "published" }
+    assert_response :success
+  end
+
+  test "should handle empty search term" do
+    get articles_url, params: { search: "" }
+    assert_response :success
+  end
+
+  test "should handle search with special SQL characters" do
+    get articles_url, params: { search: "%_" }
+    assert_response :success
+  end
 end

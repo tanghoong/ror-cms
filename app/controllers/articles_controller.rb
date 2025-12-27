@@ -3,7 +3,26 @@ class ArticlesController < ApplicationController
 
   # GET /articles or /articles.json
   def index
-    @articles = Article.all
+    @articles = Article.recent
+
+    # Apply search filter
+    if params[:search].present?
+      search_term = "%#{ActiveRecord::Base.sanitize_sql_like(params[:search])}%"
+      @articles = @articles.where(
+        "title LIKE ? OR content LIKE ? OR author LIKE ?",
+        search_term, search_term, search_term
+      )
+    end
+
+    # Apply status filter
+    if params[:status].present?
+      case params[:status]
+      when "published"
+        @articles = @articles.published
+      when "draft"
+        @articles = @articles.unpublished
+      end
+    end
   end
 
   # GET /articles/1 or /articles/1.json
